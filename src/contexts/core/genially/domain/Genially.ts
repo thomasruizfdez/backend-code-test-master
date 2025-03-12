@@ -36,4 +36,16 @@ export default class Genially {
   get deletedAt(): Date {
     return this._deletedAt;
   }
+
+  set deletedAt(deletedAt: Date) {
+    this._deletedAt = deletedAt;
+  }
+
+  set name(name: string) {
+    this._name = name;
+  }
+
+  set modifiedAt(modifiedAt: Date) {
+    this._modifiedAt = modifiedAt;
+  }
 }

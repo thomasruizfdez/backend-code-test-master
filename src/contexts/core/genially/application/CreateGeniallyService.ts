@@ -1,22 +1,19 @@
 import Genially from "../domain/Genially";
 import GeniallyRepository from "../domain/GeniallyRepository";
-
-type CreateGeniallyServiceRequest = {
-  id: string;
-  name: string;
-  description: string;
-};
+import { CreateGeniallyDto } from "./dtos/CreateGenially.dto";
+import { GeniallyDto } from "./dtos/Genially.dto";
+import { ApplicationMapper } from "./mappers/ApplicationMapper";
 
 export default class CreateGeniallyService {
   constructor(private repository: GeniallyRepository) {}
 
-  public async execute(req: CreateGeniallyServiceRequest): Promise<Genially> {
-    const { id, name, description } = req;
+  public async execute(body: CreateGeniallyDto): Promise<GeniallyDto> {
+    const { id, name, description } = body;
 
     const genially = new Genially(id, name, description);
 
     await this.repository.save(genially);
 
-    return genially;
+    return ApplicationMapper.toDto(genially);
   }
 }
