@@ -14,4 +14,9 @@ export class CreateGeniallyDto  {
     @MaxLength(125)
     @IsNotEmpty()
     description: string;
+
+    @IsString()
+    @MaxLength(125)
+    @IsNotEmpty()
+    mipolla: string;
 }
